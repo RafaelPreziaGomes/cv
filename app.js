@@ -1,24 +1,30 @@
 //  requirements
-
+///////////////////////////
+////////////////////////////
 const express = require("express");
 
 const fs = require("fs");
+
+// import the router
+const router = require("./routes/router");
+
+///////////////////////////
+////////////////////////////
 
 // initialize express
 
 const app = express();
 
-//  read the html files
-
 //  get the index.html file at route /
 
-// serve static files
+//  sending static files
+////////////////////////////////
+////////////////////////////////
+
+// serve index.html file
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {});
-
 //  get the html-website.html file at route /html-website
-
 app.get("/html-website", (req, res) => {
   // set headers
   res.setHeader("Content-Type", "text/html");
@@ -34,8 +40,9 @@ app.get("/portifolio-hub", (req, res) => {
   res.sendFile(__dirname + "/public/portifolio-hub.html");
 });
 
-//  listening for requests on port 3000
+////////////////////////////////
+////////////////////////////////
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+//  export app
+
+module.exports = app;
